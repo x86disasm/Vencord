@@ -14,10 +14,18 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
+ */
 
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
+import { FluxDispatcher } from "@webpack/common";
+
+// when called by other plugins to trigger message re-renders
+export function dispatchMessageUpdate(): void {
+    FluxDispatcher.dispatch({
+        type: "MESSAGE_UPDATE"
+    });
+}
 
 export default definePlugin({
     name: "MessageUpdaterAPI",
